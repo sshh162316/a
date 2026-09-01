@@ -4,10 +4,14 @@ const path = require("path");
 const mongoose = require("mongoose");
 const { Schema } = require("mongoose");
 const Item = require("./models/item.js");
+const methodOverride = require("method-override");
+
 
 app.set("view engine" , "ejs");
 app.set("views" , path.join(__dirname , "views")); 
-app.use(express.urlencoded({extended : true}));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+
 
 main().then(()=>{console.log("connection successfill");})
     
@@ -34,6 +38,17 @@ app.post("/listings", async (req, res) => {
     Item.insertOne(newItem);
     res.redirect("/listings");
 })
+
+// Update Route
+app.put("/listings/:id", async (req, res) => {
+    let used = req.body;
+    let { id } = req.params;
+    let {quentity} = await Item.findById(id);
+    let newQuentity = quentity - used.quentity;
+
+    await Item.findByIdAndUpdate(id, { quentity: newQuentity });
+    res.redirect("/listings");
+});
 
 app.get("/", (req, res) => {
     res.send("WORKING");

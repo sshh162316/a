@@ -20,7 +20,7 @@
             <tr>
                 <td> <%=i.item%> </td>
                 <td> <%= i.quentity %> </td> 
-                <td><form action="">
+                <td><form action="/listings/<%= i._id %>?_method=PUT" method="post" >
                     <input type="number" name="quentity">
                     <button>submit</button>
                 </form></td>
