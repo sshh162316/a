@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <a href="/listings/new"><button>Add Item</button></a>
+    
+    <table border="2px solid">
+        <tr>
+            <th>Item</th>
+            <th>Quentity</th>
+        </tr>
+        <% for (let i of allItems){ %>
+            <tr>
+                <td> <%=i.item%> </td>
+                <td> <%= i.quentity %> </td> 
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>
