@@ -13,6 +13,7 @@
         <tr>
             <th>Item</th>
             <th>Quentity</th>
+            <th>Daily Used</th>
             <th>Edit</th>
           
         </tr>
@@ -20,6 +21,7 @@
             <tr>
                 <td> <%=i.item%> </td>
                 <td> <%= i.quentity %> </td> 
+                <td> <%= i.dailyUsed %> </td>
                 <td><form action="/listings/<%= i._id %>?_method=PUT" method="post" >
                     <input type="number" name="quentity">
                     <button>submit</button>
